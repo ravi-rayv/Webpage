@@ -1,0 +1,414 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Scholar Website</title>
+  <meta name="description" content="Personal academic website of Your Name: research, publications, projects, teaching, and contact." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎓</text></svg>">
+
+  <!-- Open Graph / Twitter for better link previews -->
+  <meta property="og:title" content="Your Name — Scholar Website" />
+  <meta property="og:description" content="Research • Publications • Projects • Teaching" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://<your-username>.github.io/" />
+  <meta property="og:image" content="https://<your-username>.github.io/og-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    :root {
+      --bg: #0b0c0f;
+      --text: #e6e6e6;
+      --muted: #b3b3b3;
+      --card: #12141a;
+      --accent: #4da3ff;
+      --accent-contrast: #001a33;
+      --border: #2a2f3a;
+      --link: #7db6ff;
+    }
+
+    /* Light theme vars will be toggled via [data-theme="light"] on <html> */
+    html[data-theme="light"] {
+      --bg: #ffffff;
+      --text: #111318;
+      --muted: #4b5563;
+      --card: #f5f7fb;
+      --accent: #2563eb;
+      --accent-contrast: #e8f0ff;
+      --border: #e5e7eb;
+      --link: #1d4ed8;
+    }
+
+    /* Base */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 400 16px / 1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container { width: min(1100px, 92%); margin-inline: auto; }
+    .stack { display: grid; gap: 1rem; }
+
+    /* Skip link for a11y */
+    .skip-link { position: absolute; left: -1000px; top: -1000px; }
+    .skip-link:focus { left: 1rem; top: 1rem; background: var(--accent); color: white; padding: .5rem .75rem; border-radius: .5rem; }
+
+    /* Header / Nav */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(180%) blur(8px);
+      background: color-mix(in oklab, var(--bg) 85%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: .75rem 0; }
+    .brand { display: flex; align-items: center; gap: .6rem; font-weight: 700; }
+    .brand img { width: 28px; height: 28px; border-radius: 50%; }
+    .nav a { font-weight: 600; }
+    .nav-links { display: flex; gap: 1rem; align-items: center; }
+    .nav-links a { padding: .4rem .6rem; border-radius: .5rem; }
+    .nav-links a:hover { background: var(--card); text-decoration: none; }
+    .theme-btn { border: 1px solid var(--border); background: var(--card); color: var(--text); padding: .4rem .6rem; border-radius: .5rem; cursor: pointer; }
+
+    /* Hero */
+    .hero { padding: 3rem 0 2rem; }
+    .hero-inner { display: grid; grid-template-columns: 140px 1fr; gap: 1.2rem; align-items: center; }
+    .avatar { width: 140px; height: 140px; border-radius: 1rem; object-fit: cover; border: 1px solid var(--border); }
+    h1 { font-size: clamp(1.8rem, 1.2rem + 2.6vw, 3rem); margin: 0; }
+    .subtitle { color: var(--muted); margin-top: .25rem; }
+    .actions { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: .9rem; }
+    .btn { display: inline-flex; align-items: center; gap: .5rem; border: 1px solid var(--border); background: var(--card); color: var(--text); padding: .55rem .8rem; border-radius: .6rem; font-weight: 600; }
+    .btn.primary { background: var(--accent); color: white; border-color: color-mix(in oklab, var(--accent) 60%, black); }
+    .btn:hover { text-decoration: none; transform: translateY(-1px); }
+
+    /* Sections */
+    section { padding: 2rem 0; }
+    section + section { border-top: 1px dashed var(--border); }
+    .section-title { font-size: 1.4rem; margin: 0 0 1rem; }
+    .muted { color: var(--muted); }
+
+    /* Cards + Grid */
+    .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 1rem; }
+    .card h3 { margin: 0 0 .5rem; font-size: 1.05rem; }
+    .meta { font-size: .9rem; color: var(--muted); }
+
+    /* Publications */
+    .pub-toolbar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin-bottom: .75rem; }
+    .search { width: min(420px, 100%); border: 1px solid var(--border); background: var(--bg); color: var(--text); padding: .55rem .7rem; border-radius: .6rem; }
+    .pub-list { list-style: none; padding: 0; margin: 0; }
+    .pub-item { padding: .8rem; border: 1px solid var(--border); border-radius: .8rem; margin-bottom: .6rem; background: var(--card); }
+    .pub-item .title { font-weight: 650; }
+    .pub-item .authors, .pub-item .venue { color: var(--muted); font-size: .95rem; }
+
+    /* Footer */
+    footer { padding: 2rem 0 3rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+    .socials { display: flex; gap: .8rem; flex-wrap: wrap; }
+    .badge { border: 1px solid var(--border); background: var(--card); padding: .35rem .6rem; border-radius: 999px; font-size: .9rem; }
+
+    @media (max-width: 700px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .actions { justify-content: center; }
+      .brand span { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header>
+    <div class="container nav" role="navigation">
+      <div class="brand">
+        <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" alt="Profile" />
+        <span>Your Name</span>
+      </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#projects">Projects</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">🌗</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <!-- Hero / Intro -->
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <img class="avatar" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=480&auto=format&fit=crop" alt="Your portrait" />
+        <div>
+          <h1>Your Name</h1>
+          <div class="subtitle">Graduate Student · Department of Computer Science · Your University</div>
+          <div class="actions">
+            <a class="btn primary" href="#publications">View Publications</a>
+            <a class="btn" href="assets/cv.pdf" download>Download CV</a>
+            <a class="btn" href="https://scholar.google.com/citations?user=XXXX" target="_blank" rel="noopener">Google Scholar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <div class="stack">
+        <p>
+          I am a <strong>graduate student</strong> advised by <a href="#">Prof. Advisor</a> at <a href="#">Your University</a>.
+          My research interests include <em>machine learning</em>, <em>natural language processing</em>, and <em>responsible AI</em>.
+          I build data‑efficient models and tools for transparent evaluation.
+        </p>
+        <p class="muted">Actively seeking collaborations and internships. Email me with the subject line: <code>[Collab]</code>.</p>
+      </div>
+    </section>
+
+    <!-- Research -->
+    <section id="research">
+      <h2 class="section-title">Research</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Data‑Efficient Text Generation</h3>
+          <p class="meta">2024—present · with A. Researcher, B. Scientist</p>
+          <p>Exploring small‑scale instruction tuning, active data curation, and evaluation protocols for robust generalization.</p>
+        </article>
+        <article class="card">
+          <h3>Robustness in Low‑Resource NLP</h3>
+          <p class="meta">2023—2024 · with C. Teammate</p>
+          <p>Studied adaptation methods under distribution shift; released benchmarks and analysis tools.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications" aria-live="polite">
+      <h2 class="section-title">Publications</h2>
+      <div class="pub-toolbar">
+        <input id="pubSearch" class="search" type="search" placeholder="Search publications (title, author, venue, year)…" aria-label="Search publications" />
+        <span id="pubCount" class="muted"></span>
+      </div>
+      <ol id="pubList" class="pub-list"></ol>
+      <details class="muted" style="margin-top:.5rem"><summary>How to edit this list</summary>
+        <p>Open the <code>publications</code> array in the inline script below and add/edit items. The list renders automatically and is searchable.</p>
+      </details>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2 class="section-title">Selected Projects</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>OpenEval</h3>
+          <p class="meta">2025 · TypeScript, Python</p>
+          <p>Lightweight framework for reproducible LLM evaluation with plug‑and‑play tasks.</p>
+          <p><a href="#">GitHub</a> · <a href="#">Docs</a></p>
+        </article>
+        <article class="card">
+          <h3>DataForge</h3>
+          <p class="meta">2024 · Python</p>
+          <p>Toolkit for dataset distillation and active selection with strong small‑model results.</p>
+          <p><a href="#">GitHub</a></p>
+        </article>
+        <article class="card">
+          <h3>BiasBench</h3>
+          <p class="meta">2023 · Benchmark</p>
+          <p>Open benchmark for fairness and bias in multilingual NLP.
+          <p><a href="#">Paper</a> · <a href="#">GitHub</a></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Teaching -->
+    <section id="teaching">
+      <h2 class="section-title">Teaching</h2>
+      <ul>
+        <li><strong>CS 6789 — Machine Learning</strong> (TA, Fall 2024) · Led recitations, authored assignments, office hours.</li>
+        <li><strong>CS 3456 — Data Structures</strong> (TA, Spring 2024) · Project mentoring and grading.</li>
+      </ul>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Email</h3>
+          <p><a href="mailto:your.name@university.edu">your.name@university.edu</a></p>
+        </div>
+        <div class="card">
+          <h3>Office</h3>
+          <p>Room 123, CS Building, Your University, City, Country</p>
+        </div>
+        <div class="card">
+          <h3>Social</h3>
+          <p class="socials">
+            <a class="badge" href="https://scholar.google.com/citations?user=XXXX" target="_blank" rel="noopener">Google Scholar</a>
+            <a class="badge" href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener">ORCID</a>
+            <a class="badge" href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a>
+            <a class="badge" href="https://www.linkedin.com/in/your-username" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="badge" href="https://twitter.com/your-username" target="_blank" rel="noopener">Twitter</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container stack">
+      <div class="muted">© <span id="year"></span> Your Name · Last updated <time id="lastUpdated"></time></div>
+      <div class="muted">This site is a single HTML file. Host it on GitHub Pages by pushing to a repo and enabling Pages in <em>Settings → Pages</em>.</div>
+    </div>
+  </footer>
+
+  <!-- JSON-LD Person Schema for better indexing -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Your Name",
+    "jobTitle": "Graduate Student",
+    "affiliation": { "@type": "CollegeOrUniversity", "name": "Your University" },
+    "email": "mailto:your.name@university.edu",
+    "url": "https://<your-username>.github.io/",
+    "sameAs": [
+      "https://scholar.google.com/citations?user=XXXX",
+      "https://orcid.org/0000-0000-0000-0000",
+      "https://github.com/your-username"
+    ]
+  }
+  </script>
+
+  <script>
+    // Dark mode toggle (persist choice)
+    (function initTheme() {
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const initial = saved || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', initial);
+    })();
+
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const html = document.documentElement;
+      const cur = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', cur);
+      localStorage.setItem('theme', cur);
+    });
+
+    // Footer dates
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('lastUpdated').textContent = new Date(document.lastModified).toLocaleDateString(undefined, { year: 'numeric', month: 'short' });
+
+    // === Publications data (EDIT ME) ===
+    const publications = [
+      {
+        year: 2025,
+        title: "OpenEval: Lightweight, Reproducible Evaluation for LLMs",
+        authors: ["Your Name", "A. Researcher", "B. Scientist"],
+        venue: "Proceedings of AwesomeConf 2025",
+        links: { pdf: "#", doi: "10.0000/oe.2025.12345", code: "#" }
+      },
+      {
+        year: 2024,
+        title: "DataForge: Distilling Datasets for Small Language Models",
+        authors: ["Your Name", "C. Teammate"],
+        venue: "Journal of Efficient ML, 2024",
+        links: { pdf: "#", arxiv: "https://arxiv.org/abs/0000.00000", code: "#" }
+      },
+      {
+        year: 2023,
+        title: "BiasBench: A Benchmark for Fairness in Multilingual NLP",
+        authors: ["Your Name", "D. Collaborator", "E. Colleague"],
+        venue: "NLP4Good Workshop @ BigConf 2023",
+        links: { pdf: "#", arxiv: "#", site: "#" }
+      }
+    ];
+
+    // Render publications grouped by year
+    const listEl = document.getElementById('pubList');
+    const countEl = document.getElementById('pubCount');
+
+    function renderPublications(items) {
+      listEl.innerHTML = '';
+      const byYear = items.reduce((acc, p) => {
+        (acc[p.year] ||= []).push(p); return acc;
+      }, {});
+      const years = Object.keys(byYear).sort((a,b) => b - a);
+
+      let total = 0;
+      for (const y of years) {
+        const yearGroup = document.createElement('li');
+        yearGroup.className = 'pub-item';
+        const header = document.createElement('div');
+        header.className = 'meta';
+        header.textContent = y;
+        yearGroup.appendChild(header);
+
+        const groupList = document.createElement('ol');
+        groupList.style.marginTop = '.5rem';
+        groupList.style.paddingLeft = '1rem';
+
+        for (const p of byYear[y]) {
+          total++;
+          const li = document.createElement('li');
+          li.style.marginBottom = '.5rem';
+
+          const title = document.createElement('div');
+          title.className = 'title';
+          title.textContent = p.title;
+
+          const authors = document.createElement('div');
+          authors.className = 'authors';
+          authors.textContent = p.authors.join(', ');
+
+          const venue = document.createElement('div');
+          venue.className = 'venue';
+          venue.textContent = p.venue;
+
+          const links = document.createElement('div');
+          links.className = 'meta';
+          if (p.links) {
+            const entries = Object.entries(p.links).filter(([,v]) => !!v);
+            for (const [k, v] of entries) {
+              const a = document.createElement('a');
+              a.href = v.startsWith('http') || v.startsWith('#') ? v : `https://doi.org/${v}`;
+              a.target = v.startsWith('#') ? '' : '_blank';
+              a.rel = v.startsWith('#') ? '' : 'noopener';
+              a.textContent = k.toUpperCase();
+              a.style.marginRight = '.6rem';
+              links.appendChild(a);
+            }
+          }
+
+          li.appendChild(title);
+          li.appendChild(authors);
+          li.appendChild(venue);
+          if (links.childNodes.length) li.appendChild(links);
+          groupList.appendChild(li);
+        }
+
+        yearGroup.appendChild(groupList);
+        listEl.appendChild(yearGroup);
+      }
+      countEl.textContent = `${total} item${total === 1 ? '' : 's'}`;
+    }
+
+    renderPublications(publications);
+
+    // Publication search (client-side)
+    document.getElementById('pubSearch').addEventListener('input', (e) => {
+      const q = e.target.value.trim().toLowerCase();
+      if (!q) return renderPublications(publications);
+      const filtered = publications.filter(p =>
+        (p.title + ' ' + p.venue + ' ' + p.year + ' ' + p.authors.join(' ')).toLowerCase().includes(q)
+      );
+      renderPublications(filtered);
+    });
+  </script>
+</body>
+</html>
