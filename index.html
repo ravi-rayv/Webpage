@@ -20,8 +20,10 @@
   <meta property="og:description" content="Research • Publications • Projects • Teaching" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://<your-username>.github.io/" />
-  <meta property="og:image" content="https://<your-username>.github.io/og-card.png" />
+  <!-- ✅ Updated preview image to your own photo -->
+  <meta property="og:image" content="https://<your-username>.github.io/assets/profile.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://<your-username>.github.io/assets/profile.jpg" />
 
   <style>
     :root {
@@ -68,9 +70,7 @@
     .container { width: min(1100px, 92%); margin-inline: auto; }
     .stack { display: grid; gap: 1rem; }
 
-    .skip-link {
-      position: absolute; left: -1000px; top: -1000px;
-    }
+    .skip-link { position: absolute; left: -1000px; top: -1000px; }
     .skip-link:focus-visible {
       left: 1rem; top: 1rem; background: var(--accent); color: #fff;
       padding: .5rem .75rem; border-radius: .5rem;
@@ -97,9 +97,7 @@
 
     .hero { padding: 3rem 0 2rem; }
     .hero-inner { display: grid; grid-template-columns: 140px 1fr; gap: 1.2rem; align-items: center; }
-    .avatar {
-      width: 140px; height: 140px; border-radius: 1rem; object-fit: cover; border: 1px solid var(--border);
-    }
+    .avatar { width: 140px; height: 140px; border-radius: 1rem; object-fit: cover; border: 1px solid var(--border); }
     h1 { font-size: clamp(1.8rem, 1.2rem + 2.6vw, 3rem); margin: 0; }
     .subtitle { color: var(--muted); margin-top: .25rem; }
     .actions { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: .9rem; }
@@ -150,7 +148,8 @@
   <header>
     <div class="container nav">
       <div class="brand">
-        <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" alt="Profile" width="28" height="28" loading="lazy" decoding="async" />
+        <!-- ✅ Updated header avatar to your photo -->
+        <img src="assets/profile.jpeg" alt="Profile" width="28" height="28" loading="lazy" decoding="async" />
         <span>Ravi Satyappa Dabbanavar</span>
       </div>
       <nav class="nav-links" aria-label="Primary">
@@ -171,12 +170,15 @@
   </header>
 
   <main id="main" class="container">
+    <!-- Hero / Intro -->
     <section class="hero" id="home">
       <div class="hero-inner">
+        <!-- ✅ Updated hero photo to your photo -->
         <img class="avatar"
              src="assets/profile.jpg"
              alt="Portrait of Ravi Satyappa Dabbanavar"
-             width="140" height="140" decoding="async" fetchpriority="high" />
+             width="140" height="140"
+             decoding="async" fetchpriority="high" />
         <div>
           <h1>Ravi Satyappa Dabbanavar</h1>
           <div class="subtitle">Ph.D. Scholar (IV Year, II Semester) · Department of Architecture & Planning · IIT Roorkee</div>
@@ -189,6 +191,7 @@
       </div>
     </section>
 
+    <!-- About -->
     <section id="about">
       <h2 class="section-title">About</h2>
       <div class="stack">
@@ -196,6 +199,371 @@
           I am a <strong>Ph.D. Scholar</strong> (Integrated PG + Ph.D.) at the <strong>Department of Architecture & Planning</strong>, <strong>Indian Institute of Technology Roorkee</strong>.
           My areas of interest include <em>Urban & Rural Planning</em>, <em>Land-Use Planning</em>, and <em>Transport Planning</em>.
         </p>
-        <p class="muted">Email me for collaborations in urban analytics, remote sensing, and user-generated big-da
+        <p class="muted">Email me for collaborations in urban analytics, remote sensing, and user-generated big-data for land-use studies.</p>
+      </div>
+    </section>
 
+    <!-- Education -->
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      <ul>
+        <li><strong>Ph.D. Scholar (Integrated PG + Ph.D.)</strong>, IIT Roorkee — <em>Pursuing</em> · IV Year, II Semester</li>
+        <li><strong>Postgraduate (PG)</strong>, IIT Roorkee — CGPA: 8.700</li>
+        <li><strong>Graduate (UG)</strong>, School of Planning and Architecture, Vijayawada (2020) — CGPA: 7.140</li>
+        <li><strong>Intermediate (Class XII)</strong>, Narayana PU College, Bengaluru (2015) — 75.60%</li>
+      </ul>
+    </section>
 
+    <!-- Research -->
+    <section id="research">
+      <h2 class="section-title">Research</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Urban Land-Use Classification from Multisource Data</h3>
+          <p class="meta">2023—present · IIT Roorkee</p>
+          <p>Integrating satellite imagery and user-generated POI data with topic modeling and deep learning to improve urban functional zone mapping.</p>
+        </article>
+        <article class="card">
+          <h3>Housing Satisfaction & Disaster Resilience</h3>
+          <p class="meta">2024 · Uttarakhand</p>
+          <p>Evaluating PMAY-Urban’s contribution to socio-economic outcomes and resilience metrics across Uttarakhand districts.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications" aria-live="polite">
+      <h2 class="section-title">Publications</h2>
+      <div class="pub-toolbar">
+        <label for="pubSearch" class="visually-hidden" style="position:absolute;left:-9999px;">Search publications</label>
+        <input id="pubSearch" class="search" type="search" placeholder="Search publications (title, author, venue, year)…" aria-label="Search publications" />
+        <span id="pubCount" class="muted"></span>
+      </div>
+      <ol id="pubList" class="pub-list"></ol>
+      <details class="muted" style="margin-top:.5rem"><summary>How to edit this list</summary>
+        <p>Edit the <code>publications</code> array in the inline script below.</p>
+      </details>
+    </section>
+
+    <!-- Conferences & Workshops -->
+    <section id="conferences">
+      <h2 class="section-title">Conferences & Workshops</h2>
+      <ul>
+        <li><strong>EGU General Assembly</strong>, Apr 27 – May 2, 2025, Vienna — “Integrating User-Generated POI Data and Satellite Imagery for Enhanced Urban Land Use Classification: A Topic Modeling Approach” — <a href="https://doi.org/10.5194/egusphere-egu25-8380" target="_blank" rel="noopener noreferrer">DOI</a></li>
+        <li><strong>AI and the City</strong>, Jan 4–5, 2025, Bengaluru — “A Unified Data Integration Approach for Improved Urban Land Use Classification”</li>
+        <li><strong>National Workshop (ICSSR-supported)</strong>, Feb 2024, IIT Roorkee — “Evaluating PMAY-Urban’s contribution in Uplifting Housing Satisfaction, Socio-economic Conditions and Improving Disaster Resilience in Uttarakhand”</li>
+        <li><strong>ILUS — International Land Use Symposium</strong>, Oct 2023, CEPT University, Ahmedabad — “A Review of Essential Urban Land Use Techniques: The Role of Remote Sensing and User Generated Big Data”</li>
+        <li><strong>Workshop (British Council funded)</strong>, May 2022, IIT Roorkee — “Rethinking urban planning pedagogy to address future challenges of Urbanization”</li>
+      </ul>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2 class="section-title">Selected Projects</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Urban Land-Use Mapping Toolkit</h3>
+          <p class="meta">2025 · Python, GIS</p>
+          <p>Prototype toolkit for integrating POI data and satellite imagery for functional zone mapping and evaluation.</p>
+        </article>
+        <article class="card">
+          <h3>Transport Accessibility Dashboard</h3>
+          <p class="meta">2024 · Power BI, QGIS</p>
+          <p>Interactive dashboard for multi-modal accessibility analysis in urban neighborhoods.</p>
+        </article>
+        <article class="card">
+          <h3>PMAY-U Impact Study</h3>
+          <p class="meta">2024 · Field + Analytics</p>
+          <p>Data collection and analysis to measure housing satisfaction and resilience improvements.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Awards -->
+    <section id="awards">
+      <h2 class="section-title">Awards & Achievements</h2>
+      <ul>
+        <li>Best 25 Poster submissions — Mission Amrit Sarovar, Jal Dharohar Sanrakshan Internship (2022)</li>
+        <li>Best 25 Photography submissions — Mission Amrit Sarovar, Jal Dharohar Sanrakshan Internship (2022)</li>
+        <li>Recipient — Going Online as Leaders (GOAL) Program (2020)</li>
+        <li>AR GATE 2020</li>
+      </ul>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <h2 class="section-title">Experience (Internships)</h2>
+      <ul>
+        <li><strong>Tamil Nadu Institute of Urban Studies, Coimbatore</strong> — Summer Internship (Jun–Jul 2018) · GIS handbook for town-planning officials (TN)</li>
+        <li><strong>Urban Box Consultancy, Gorakhpur</strong> — Summer Internship (Jun–Jul 2019) · Drainage & sanitation plan for Gorakhpur (UP)</li>
+        <li><strong>Mission Amrit Sarovar — Jal Dharohar Sanrakshan Internship (AICTE)</strong> (Jul–Aug 2022) · Rejuvenation & re-imagination strategy for Lake Mist, Mussoorie, Uttarakhand</li>
+      </ul>
+    </section>
+
+    <!-- Teaching -->
+    <section id="teaching">
+      <h2 class="section-title">Teaching</h2>
+      <ul>
+        <li><strong>TA — ARN-651, Planning Studio (MURP)</strong>, Dept. of Architecture & Planning, IIT Roorkee — Spring 2022</li>
+        <li><strong>TA — ARN-659, Housing (MURP)</strong>, Dept. of Architecture & Planning, IIT Roorkee — Autumn 2023</li>
+        <li><strong>TA — ARN-656, Rural Planning & Development (MURP)</strong>, Dept. of Architecture & Planning, IIT Roorkee — Spring 2024</li>
+        <li><strong>TA — ARC-627, GIS & Remote Sensing Techniques (MURP)</strong>, Dept. of Architecture & Planning, IIT Roorkee — Autumn 2024</li>
+        <li><strong>RA — Teaching plan and ITPI matters</strong>, Dept. of Architecture & Planning, IIT Roorkee — Autumn 2023–Present</li>
+      </ul>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Programming</h3>
+          <p>Python; C++ (Basic); Java (Basic)</p>
+        </div>
+        <div class="card">
+          <h3>GIS & Tools</h3>
+          <p>ArcGIS, QGIS, ERDAS</p>
+        </div>
+        <div class="card">
+          <h3>Data & Productivity</h3>
+          <p>MS Office, Power BI</p>
+        </div>
+        <div class="card">
+          <h3>Languages</h3>
+          <p>English, Kannada, Hindi, Telugu</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Email</h3>
+          <p><a href="mailto:rs_dabbanavar@ar.iitr.ac.in">rs_dabbanavar@ar.iitr.ac.in</a></p>
+        </div>
+        <div class="card">
+          <h3>Phone</h3>
+          <p><a href="tel:+919108090740">+91 91080 90740</a></p>
+        </div>
+        <div class="card">
+          <h3>Office</h3>
+          <p>Dept. of Architecture & Planning, IIT Roorkee, Roorkee, Uttarakhand, India</p>
+        </div>
+        <div class="card">
+          <h3>Social</h3>
+          <p class="socials">
+            <a class="badge" href="https://scholar.google.com/scholar?q=Ravi+Satyappa+Dabbanavar" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+            <a class="badge" href="https://orcid.org/0000-0002-0118-592X" target="_blank" rel="noopener noreferrer">ORCID</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container stack">
+      <div class="muted">© <span id="year"></span> Ravi Satyappa Dabbanavar · Last updated <time id="lastUpdated"></time></div>
+      <div class="muted">This site is a single HTML file. Host it on GitHub Pages by pushing to a repo and enabling Pages in <em>Settings → Pages</em>.</div>
+    </div>
+  </footer>
+
+  <!-- JSON-LD Person Schema (✅ adds your image for richer previews) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ravi Satyappa Dabbanavar",
+    "jobTitle": "Ph.D. Scholar",
+    "affiliation": { "@type": "CollegeOrUniversity", "name": "Indian Institute of Technology Roorkee" },
+    "email": "mailto:rs_dabbanavar@ar.iitr.ac.in",
+    "url": "https://<your-username>.github.io/",
+    "sameAs": ["https://orcid.org/0000-0002-0118-592X"],
+    "image": "https://<your-username>.github.io/assets/profile.jpg"
+  }
+  </script>
+
+  <script>
+    // Theme: init + persist + meta theme-color sync + aria-pressed
+    (function initTheme() {
+      const metaLight = document.querySelector('meta[name="theme-color"][media*="light"]');
+      const metaDark  = document.querySelector('meta[name="theme-color"][media*="dark"]');
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const initial = saved || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', initial);
+      const btn = document.getElementById('themeToggle');
+      if (btn) btn.setAttribute('aria-pressed', initial === 'dark' ? 'true' : 'false');
+
+      function updateMeta(which) {
+        if (!metaLight || !metaDark) return;
+        metaLight.setAttribute('content', '#ffffff'); // why: keeps address bar readable in light
+        metaDark.setAttribute('content', '#0b0c0f'); // why: keeps address bar readable in dark
+      }
+      updateMeta(initial);
+
+      document.getElementById('themeToggle').addEventListener('click', () => {
+        const html = document.documentElement;
+        const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        document.getElementById('themeToggle').setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
+        updateMeta(next);
+      });
+    })();
+
+    // Footer dates
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('lastUpdated').textContent =
+      new Date(document.lastModified).toLocaleDateString(undefined, { year: 'numeric', month: 'short' });
+
+    // Publications data (EDIT ME)
+    const publications = [
+      {
+        year: 2025,
+        title: "Integrating Deep Learning and Natural Language Processing in Detailed Urban Land-Use Mapping: A Case Study of Mumbai",
+        authors: ["R. S. Dabbanavar", "A. Biswas"],
+        venue: "International Journal of Applied Earth Observation and Geoinformation (Under review)",
+        links: { }
+      },
+      {
+        year: 2024,
+        title: "A Comparative Study of Topic Modelling Approaches for User-Generated Point of Interest Data",
+        authors: ["R. S. Dabbanavar", "A. Biswas"],
+        venue: "ICCAUA 2024 — 7th International Conference of Contemporary Affairs in Architecture and Urbanism, Istanbul, Turkey",
+        links: { doi: "10.38027/ICCAUA2024IN0334" }
+      },
+      {
+        year: 2024,
+        title: "Impact Assessment Study of Area Based Development Components in Indian Smart Cities",
+        authors: ["A. Biswas et al."],
+        venue: "Smart Cities Mission Management Unit (SCMMU), 2024",
+        links: { }
+      },
+      {
+        year: 2024,
+        title: "A Review of Essential Urban Land Use Mapping Techniques: The Role of Remote Sensing and User-generated Big Data",
+        authors: ["R. S. Dabbanavar", "A. Biswas"],
+        venue: "Urban Technology (Under review)",
+        links: { }
+      },
+      {
+        year: 2024,
+        title: "Exploring Urban Functional Zone Mapping Using Supervised Topic Modeling for User-Generated Big Data in Mumbai City",
+        authors: ["R. S. Dabbanavar", "A. Biswas"],
+        venue: "Applied Geography (Under review)",
+        links: { }
+      }
+    ];
+
+    // Render publications grouped by year + search
+    const listEl = document.getElementById('pubList');
+    const countEl = document.getElementById('pubCount');
+    const totalCount = publications.length;
+
+    function renderPublications(items) {
+      listEl.innerHTML = '';
+      const byYear = items.reduce((acc, p) => {
+        (acc[p.year] ||= []).push(p); return acc;
+      }, {});
+      const years = Object.keys(byYear).map(Number).sort((a, b) => b - a);
+
+      let rendered = 0;
+      if (years.length === 0) {
+        const li = document.createElement('li');
+        li.className = 'pub-item';
+        li.textContent = 'No publications match your search.';
+        listEl.appendChild(li);
+      } else {
+        for (const y of years) {
+          const yearGroup = document.createElement('li');
+          yearGroup.className = 'pub-item';
+          const header = document.createElement('div');
+          header.className = 'meta';
+          header.textContent = y;
+          yearGroup.appendChild(header);
+
+          const groupList = document.createElement('ol');
+          groupList.style.marginTop = '.5rem';
+          groupList.style.paddingLeft = '1rem';
+
+          for (const p of byYear[y]) {
+            rendered++;
+            const li = document.createElement('li');
+            li.style.marginBottom = '.5rem';
+
+            const title = document.createElement('div');
+            title.className = 'title';
+            title.textContent = p.title;
+
+            const authors = document.createElement('div');
+            authors.className = 'authors';
+            authors.textContent = p.authors.join(', ');
+
+            const venue = document.createElement('div');
+            venue.className = 'venue';
+            venue.textContent = p.venue;
+
+            const links = document.createElement('div');
+            links.className = 'meta';
+            if (p.links) {
+              const entries = Object.entries(p.links).filter(([,v]) => !!v);
+              for (const [k, v] of entries) {
+                const a = document.createElement('a');
+                a.href = v.startsWith('http') || v.startsWith('#') ? v : `https://doi.org/${v}`;
+                a.target = v.startsWith('#') ? '' : '_blank';
+                a.rel = v.startsWith('#') ? '' : 'noopener noreferrer';
+                a.textContent = k.toUpperCase();
+                a.style.marginRight = '.6rem';
+                links.appendChild(a);
+              }
+            }
+
+            li.appendChild(title);
+            li.appendChild(authors);
+            li.appendChild(venue);
+            if (links.childNodes.length) li.appendChild(links);
+            groupList.appendChild(li);
+          }
+
+          yearGroup.appendChild(groupList);
+          listEl.appendChild(yearGroup);
+        }
+      }
+      const plural = totalCount === 1 ? 'item' : 'items';
+      const suffix = items.length === totalCount ? '' : ` · showing ${items.length} of ${totalCount}`;
+      countEl.textContent = `${totalCount} ${plural}${suffix}`;
+    }
+
+    renderPublications(publications);
+
+    document.getElementById('pubSearch').addEventListener('input', (e) => {
+      const q = e.target.value.trim().toLowerCase();
+      if (!q) return renderPublications(publications);
+      const filtered = publications.filter(p =>
+        (p.title + ' ' + p.venue + ' ' + String(p.year) + ' ' + p.authors.join(' ')).toLowerCase().includes(q)
+      );
+      renderPublications(filtered);
+    });
+
+    // Active section link highlight via IntersectionObserver
+    (function navActive() {
+      const links = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+      const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const id = entry.target.id;
+          const link = map.get(id);
+          if (!link) return;
+          if (entry.isIntersecting) {
+            links.forEach(l => l.setAttribute('aria-current', 'false'));
+            link.setAttribute('aria-current', 'true');
+          }
+        });
+      }, { threshold: 0.5 });
+      document.querySelectorAll('main section[id]').forEach(sec => obs.observe(sec));
+    })();
+  </script>
+</body>
+</html>
