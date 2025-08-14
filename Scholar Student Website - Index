@@ -1,13 +1,15 @@
+<!-- /index.html -->
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name — Scholar Website</title>
-  <meta name="description" content="Personal academic website of Your Name: research, publications, projects, teaching, and contact." />
+  <title>Ravi Satyappa Dabbanavar — Scholar Website</title>
+  <meta name="description" content="Personal academic website of Ravi Satyappa Dabbanavar, Ph.D. Scholar at IIT Roorkee: research, publications, projects, teaching, and contact." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎓</text></svg>">
 
   <!-- Open Graph / Twitter for better link previews -->
-  <meta property="og:title" content="Your Name — Scholar Website" />
+  <meta property="og:title" content="Ravi Satyappa Dabbanavar — Scholar Website" />
   <meta property="og:description" content="Research • Publications • Projects • Teaching" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://<your-username>.github.io/" />
@@ -125,14 +127,19 @@
     <div class="container nav" role="navigation">
       <div class="brand">
         <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" alt="Profile" />
-        <span>Your Name</span>
+        <span>Ravi Satyappa Dabbanavar</span>
       </div>
       <nav class="nav-links" aria-label="Primary">
         <a href="#about">About</a>
+        <a href="#education">Education</a>
         <a href="#research">Research</a>
         <a href="#publications">Publications</a>
+        <a href="#conferences">Conferences</a>
         <a href="#projects">Projects</a>
         <a href="#teaching">Teaching</a>
+        <a href="#awards">Awards</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
         <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode">🌗</button>
       </nav>
@@ -145,12 +152,12 @@
       <div class="hero-inner">
         <img class="avatar" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=480&auto=format&fit=crop" alt="Your portrait" />
         <div>
-          <h1>Your Name</h1>
-          <div class="subtitle">Graduate Student · Department of Computer Science · Your University</div>
+          <h1>Ravi Satyappa Dabbanavar</h1>
+          <div class="subtitle">Ph.D. Scholar (IV Year, II Semester) · Department of Architecture & Planning · IIT Roorkee</div>
           <div class="actions">
             <a class="btn primary" href="#publications">View Publications</a>
-            <a class="btn" href="assets/cv.pdf" download>Download CV</a>
-            <a class="btn" href="https://scholar.google.com/citations?user=XXXX" target="_blank" rel="noopener">Google Scholar</a>
+            <a class="btn" href="assets/Ravi_cv.docx" download>Download CV</a>
+            <a class="btn" href="https://scholar.google.com/scholar?q=Ravi+Satyappa+Dabbanavar" target="_blank" rel="noopener">Google Scholar</a>
           </div>
         </div>
       </div>
@@ -161,12 +168,22 @@
       <h2 class="section-title">About</h2>
       <div class="stack">
         <p>
-          I am a <strong>graduate student</strong> advised by <a href="#">Prof. Advisor</a> at <a href="#">Your University</a>.
-          My research interests include <em>machine learning</em>, <em>natural language processing</em>, and <em>responsible AI</em>.
-          I build data‑efficient models and tools for transparent evaluation.
+          I am a <strong>Ph.D. Scholar</strong> (Integrated PG + Ph.D.) at the <strong>Department of Architecture & Planning</strong>, <strong>Indian Institute of Technology Roorkee</strong>.
+          My areas of interest include <em>Urban & Rural Planning</em>, <em>Land‑Use Planning</em>, and <em>Transport Planning</em>.
         </p>
-        <p class="muted">Actively seeking collaborations and internships. Email me with the subject line: <code>[Collab]</code>.</p>
+        <p class="muted">Email me for collaborations in urban analytics, remote sensing, and user‑generated big‑data for land‑use studies.</p>
       </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      <ul>
+        <li><strong>Ph.D. Scholar (Integrated PG + Ph.D.)</strong>, IIT Roorkee — <em>Pursuing</em> · IV Year, II Semester</li>
+        <li><strong>Postgraduate (PG)</strong>, IIT Roorkee — CGPA: 8.700</li>
+        <li><strong>Graduate (UG)</strong>, School of Planning and Architecture, Vijayawada (2020) — CGPA: 7.140</li>
+        <li><strong>Intermediate (Class XII)</strong>, Narayana PU College, Bengaluru (2015) — 75.60%</li>
+      </ul>
     </section>
 
     <!-- Research -->
@@ -174,14 +191,14 @@
       <h2 class="section-title">Research</h2>
       <div class="grid">
         <article class="card">
-          <h3>Data‑Efficient Text Generation</h3>
-          <p class="meta">2024—present · with A. Researcher, B. Scientist</p>
-          <p>Exploring small‑scale instruction tuning, active data curation, and evaluation protocols for robust generalization.</p>
+          <h3>Urban Land‑Use Classification from Multisource Data</h3>
+          <p class="meta">2023—present · IIT Roorkee</p>
+          <p>Integrating satellite imagery and user‑generated POI data with topic modeling and deep learning to improve urban functional zone mapping.</p>
         </article>
         <article class="card">
-          <h3>Robustness in Low‑Resource NLP</h3>
-          <p class="meta">2023—2024 · with C. Teammate</p>
-          <p>Studied adaptation methods under distribution shift; released benchmarks and analysis tools.</p>
+          <h3>Housing Satisfaction & Disaster Resilience</h3>
+          <p class="meta">2024 · Uttarakhand</p>
+          <p>Evaluating PMAY‑Urban’s contribution to socio‑economic outcomes and resilience metrics across Uttarakhand districts.</p>
         </article>
       </div>
     </section>
@@ -195,8 +212,20 @@
       </div>
       <ol id="pubList" class="pub-list"></ol>
       <details class="muted" style="margin-top:.5rem"><summary>How to edit this list</summary>
-        <p>Open the <code>publications</code> array in the inline script below and add/edit items. The list renders automatically and is searchable.</p>
+        <p>Edit the <code>publications</code> array in the inline script below.</p>
       </details>
+    </section>
+
+    <!-- Conferences & Workshops -->
+    <section id="conferences">
+      <h2 class="section-title">Conferences & Workshops</h2>
+      <ul>
+        <li><strong>EGU General Assembly</strong>, Apr 27 – May 2, 2025, Vienna — “Integrating User‑Generated POI Data and Satellite Imagery for Enhanced Urban Land Use Classification: A Topic Modeling Approach” — <a href="https://doi.org/10.5194/egusphere-egu25-8380" target="_blank" rel="noopener">DOI</a></li>
+        <li><strong>AI and the City</strong>, Jan 4–5, 2025, Bengaluru — “A Unified Data Integration Approach for Improved Urban Land Use Classification”</li>
+        <li><strong>National Workshop (ICSSR‑supported)</strong>, Feb 2024, IIT Roorkee — “Evaluating PMAY‑Urban’s contribution in Uplifting Housing Satisfaction, Socio‑economic Conditions and Improving Disaster Resilience in Uttarakhand”</li>
+        <li><strong>ILUS — International Land Use Symposium</strong>, Oct 2023, CEPT University, Ahmedabad — “A Review of Essential Urban Land Use Techniques: The Role of Remote Sensing and User Generated Big Data”</li>
+        <li><strong>Workshop (British Council funded)</strong>, May 2022, IIT Roorkee — “Rethinking urban planning pedagogy to address future challenges of Urbanization”</li>
+      </ul>
     </section>
 
     <!-- Projects -->
@@ -204,33 +233,77 @@
       <h2 class="section-title">Selected Projects</h2>
       <div class="grid">
         <article class="card">
-          <h3>OpenEval</h3>
-          <p class="meta">2025 · TypeScript, Python</p>
-          <p>Lightweight framework for reproducible LLM evaluation with plug‑and‑play tasks.</p>
-          <p><a href="#">GitHub</a> · <a href="#">Docs</a></p>
+          <h3>Urban Land‑Use Mapping Toolkit</h3>
+          <p class="meta">2025 · Python, GIS</p>
+          <p>Prototype toolkit for integrating POI data and satellite imagery for functional zone mapping and evaluation.</p>
         </article>
         <article class="card">
-          <h3>DataForge</h3>
-          <p class="meta">2024 · Python</p>
-          <p>Toolkit for dataset distillation and active selection with strong small‑model results.</p>
-          <p><a href="#">GitHub</a></p>
+          <h3>Transport Accessibility Dashboard</h3>
+          <p class="meta">2024 · Power BI, QGIS</p>
+          <p>Interactive dashboard for multi‑modal accessibility analysis in urban neighborhoods.</p>
         </article>
         <article class="card">
-          <h3>BiasBench</h3>
-          <p class="meta">2023 · Benchmark</p>
-          <p>Open benchmark for fairness and bias in multilingual NLP.
-          <p><a href="#">Paper</a> · <a href="#">GitHub</a></p>
+          <h3>PMAY‑U Impact Study</h3>
+          <p class="meta">2024 · Field + Analytics</p>
+          <p>Data collection and analysis to measure housing satisfaction and resilience improvements.</p>
         </article>
       </div>
+    </section>
+
+    <!-- Awards -->
+    <section id="awards">
+      <h2 class="section-title">Awards & Achievements</h2>
+      <ul>
+        <li>Best 25 Poster submissions — Mission Amrit Sarovar, Jal Dharohar Sanrakshan Internship (2022)</li>
+        <li>Best 25 Photography submissions — Mission Amrit Sarovar, Jal Dharohar Sanrakshan Internship (2022)</li>
+        <li>Recipient — Going Online as Leaders (GOAL) Program (2020)</li>
+        <li>AR GATE 2020</li>
+      </ul>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <h2 class="section-title">Experience (Internships)</h2>
+      <ul>
+        <li><strong>Tamil Nadu Institute of Urban Studies, Coimbatore</strong> — Summer Internship (Jun–Jul 2018) · GIS handbook for town‑planning officials (TN)</li>
+        <li><strong>Urban Box Consultancy, Gorakhpur</strong> — Summer Internship (Jun–Jul 2019) · Drainage & sanitation plan for Gorakhpur (UP)</li>
+        <li><strong>Mission Amrit Sarovar — Jal Dharohar Sanrakshan Internship (AICTE)</strong> (Jul–Aug 2022) · Rejuvenation & re‑imagination strategy for Lake Mist, Mussoorie, Uttarakhand</li>
+      </ul>
     </section>
 
     <!-- Teaching -->
     <section id="teaching">
       <h2 class="section-title">Teaching</h2>
       <ul>
-        <li><strong>CS 6789 — Machine Learning</strong> (TA, Fall 2024) · Led recitations, authored assignments, office hours.</li>
-        <li><strong>CS 3456 — Data Structures</strong> (TA, Spring 2024) · Project mentoring and grading.</li>
+        <li><strong>TA — ARN‑651, Planning Studio (MURP)</strong>, Dept. of Architecture & Planning, IIT Roorkee — Spring 2022</li>
+        <li><strong>TA — ARN‑659, Housing (MURP)</strong>, Dept. of Architecture & Planning, IIT Roorkee — Autumn 2023</li>
+        <li><strong>TA — ARN‑656, Rural Planning & Development (MURP)</strong>, Dept. of Architecture & Planning, IIT Roorkee — Spring 2024</li>
+        <li><strong>TA — ARC‑627, GIS & Remote Sensing Techniques (MURP)</strong>, Dept. of Architecture & Planning, IIT Roorkee — Autumn 2024</li>
+        <li><strong>RA — Teaching plan and ITPI matters</strong>, Dept. of Architecture & Planning, IIT Roorkee — Autumn 2023–Present</li>
       </ul>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Programming</h3>
+          <p>Python; C++ (Basic); Java (Basic)</p>
+        </div>
+        <div class="card">
+          <h3>GIS & Tools</h3>
+          <p>ArcGIS, QGIS, ERDAS</p>
+        </div>
+        <div class="card">
+          <h3>Data & Productivity</h3>
+          <p>MS Office, Power BI</p>
+        </div>
+        <div class="card">
+          <h3>Languages</h3>
+          <p>English, Kannada, Hindi, Telugu</p>
+        </div>
+      </div>
     </section>
 
     <!-- Contact -->
@@ -239,20 +312,21 @@
       <div class="grid">
         <div class="card">
           <h3>Email</h3>
-          <p><a href="mailto:your.name@university.edu">your.name@university.edu</a></p>
+          <p><a href="mailto:rs_dabbanavar@ar.iitr.ac.in">rs_dabbanavar@ar.iitr.ac.in</a></p>
+        </div>
+        <div class="card">
+          <h3>Phone</h3>
+          <p><a href="tel:+919108090740">+91 91080 90740</a></p>
         </div>
         <div class="card">
           <h3>Office</h3>
-          <p>Room 123, CS Building, Your University, City, Country</p>
+          <p>Dept. of Architecture & Planning, IIT Roorkee, Roorkee, Uttarakhand, India</p>
         </div>
         <div class="card">
           <h3>Social</h3>
           <p class="socials">
-            <a class="badge" href="https://scholar.google.com/citations?user=XXXX" target="_blank" rel="noopener">Google Scholar</a>
-            <a class="badge" href="https://orcid.org/0000-0000-0000-0000" target="_blank" rel="noopener">ORCID</a>
-            <a class="badge" href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a>
-            <a class="badge" href="https://www.linkedin.com/in/your-username" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="badge" href="https://twitter.com/your-username" target="_blank" rel="noopener">Twitter</a>
+            <a class="badge" href="https://scholar.google.com/scholar?q=Ravi+Satyappa+Dabbanavar" target="_blank" rel="noopener">Google Scholar</a>
+            <a class="badge" href="https://orcid.org/0000-0002-0118-592X" target="_blank" rel="noopener">ORCID</a>
           </p>
         </div>
       </div>
@@ -261,7 +335,7 @@
 
   <footer>
     <div class="container stack">
-      <div class="muted">© <span id="year"></span> Your Name · Last updated <time id="lastUpdated"></time></div>
+      <div class="muted">© <span id="year"></span> Ravi Satyappa Dabbanavar · Last updated <time id="lastUpdated"></time></div>
       <div class="muted">This site is a single HTML file. Host it on GitHub Pages by pushing to a repo and enabling Pages in <em>Settings → Pages</em>.</div>
     </div>
   </footer>
@@ -271,15 +345,13 @@
   {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Your Name",
-    "jobTitle": "Graduate Student",
-    "affiliation": { "@type": "CollegeOrUniversity", "name": "Your University" },
-    "email": "mailto:your.name@university.edu",
+    "name": "Ravi Satyappa Dabbanavar",
+    "jobTitle": "Ph.D. Scholar",
+    "affiliation": { "@type": "CollegeOrUniversity", "name": "Indian Institute of Technology Roorkee" },
+    "email": "mailto:rs_dabbanavar@ar.iitr.ac.in",
     "url": "https://<your-username>.github.io/",
     "sameAs": [
-      "https://scholar.google.com/citations?user=XXXX",
-      "https://orcid.org/0000-0000-0000-0000",
-      "https://github.com/your-username"
+      "https://orcid.org/0000-0002-0118-592X"
     ]
   }
   </script>
@@ -308,24 +380,38 @@
     const publications = [
       {
         year: 2025,
-        title: "OpenEval: Lightweight, Reproducible Evaluation for LLMs",
-        authors: ["Your Name", "A. Researcher", "B. Scientist"],
-        venue: "Proceedings of AwesomeConf 2025",
-        links: { pdf: "#", doi: "10.0000/oe.2025.12345", code: "#" }
+        title: "Integrating Deep Learning and Natural Language Processing in Detailed Urban Land-Use Mapping: A Case Study of Mumbai",
+        authors: ["R. S. Dabbanavar", "A. Biswas"],
+        venue: "International Journal of Applied Earth Observation and Geoinformation (Under review)",
+        links: { }
       },
       {
         year: 2024,
-        title: "DataForge: Distilling Datasets for Small Language Models",
-        authors: ["Your Name", "C. Teammate"],
-        venue: "Journal of Efficient ML, 2024",
-        links: { pdf: "#", arxiv: "https://arxiv.org/abs/0000.00000", code: "#" }
+        title: "A Comparative Study of Topic Modelling Approaches for User-Generated Point of Interest Data",
+        authors: ["R. S. Dabbanavar", "A. Biswas"],
+        venue: "ICCAUA 2024 — 7th International Conference of Contemporary Affairs in Architecture and Urbanism, Istanbul, Turkey",
+        links: { doi: "10.38027/ICCAUA2024IN0334" }
       },
       {
-        year: 2023,
-        title: "BiasBench: A Benchmark for Fairness in Multilingual NLP",
-        authors: ["Your Name", "D. Collaborator", "E. Colleague"],
-        venue: "NLP4Good Workshop @ BigConf 2023",
-        links: { pdf: "#", arxiv: "#", site: "#" }
+        year: 2024,
+        title: "Impact Assessment Study of Area Based Development Components in Indian Smart Cities",
+        authors: ["A. Biswas et al."],
+        venue: "Smart Cities Mission Management Unit (SCMMU), 2024",
+        links: { }
+      },
+      {
+        year: 2024,
+        title: "A Review of Essential Urban Land Use Mapping Techniques: The Role of Remote Sensing and User-generated Big Data",
+        authors: ["R. S. Dabbanavar", "A. Biswas"],
+        venue: "Urban Technology (Under review)",
+        links: { }
+      },
+      {
+        year: 2024,
+        title: "Exploring Urban Functional Zone Mapping Using Supervised Topic Modeling for User-Generated Big Data in Mumbai City",
+        authors: ["R. S. Dabbanavar", "A. Biswas"],
+        venue: "Applied Geography (Under review)",
+        links: { }
       }
     ];
 
