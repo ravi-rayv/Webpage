@@ -7,6 +7,7 @@
   <title>Ravi Satyappa Dabbanavar — Scholar Website</title>
   <meta name="description" content="Personal academic website of Ravi Satyappa Dabbanavar, Ph.D. Scholar at IIT Roorkee: research, publications, projects, teaching, and contact." />
   <meta name="robots" content="index,follow" />
+  <!-- why: set your actual username/URL for best SEO/social previews -->
   <link rel="canonical" href="https://<your-username>.github.io/" />
   <meta name="color-scheme" content="dark light" />
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
@@ -20,7 +21,7 @@
   <meta property="og:description" content="Research • Publications • Projects • Teaching" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://<your-username>.github.io/" />
-  <!-- ✅ Updated preview image to your own photo -->
+  <!-- why: use your hosted headshot for rich cards -->
   <meta property="og:image" content="https://<your-username>.github.io/assets/profile.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://<your-username>.github.io/assets/profile.jpg" />
@@ -36,6 +37,7 @@
       --border: #2a2f3a;
       --link: #7db6ff;
       --focus: #7db6ff;
+      --shadow: 0 8px 20px rgba(0,0,0,.2);
     }
     html[data-theme="light"] {
       --bg: #ffffff;
@@ -47,6 +49,7 @@
       --border: #e5e7eb;
       --link: #1d4ed8;
       --focus: #1d4ed8;
+      --shadow: 0 8px 20px rgba(17,19,24,.08);
     }
 
     * { box-sizing: border-box; }
@@ -82,6 +85,13 @@
       background: color-mix(in oklab, var(--bg) 85%, transparent);
       border-bottom: 1px solid var(--border);
     }
+    .progress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--accent), color-mix(in oklab, var(--accent) 70%, #fff));
+      z-index: 100;
+      transform-origin: left center;
+    }
+
     .nav { display: flex; align-items: center; justify-content: space-between; padding: .75rem 0; }
     .brand { display: flex; align-items: center; gap: .6rem; font-weight: 700; }
     .brand img { width: 28px; height: 28px; border-radius: 50%; }
@@ -97,14 +107,22 @@
 
     .hero { padding: 3rem 0 2rem; }
     .hero-inner { display: grid; grid-template-columns: 140px 1fr; gap: 1.2rem; align-items: center; }
-    .avatar { width: 140px; height: 140px; border-radius: 1rem; object-fit: cover; border: 1px solid var(--border); }
-    h1 { font-size: clamp(1.8rem, 1.2rem + 2.6vw, 3rem); margin: 0; }
+    .avatar {
+      width: 140px; height: 140px; border-radius: 1rem; object-fit: cover; border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    h1 { font-size: clamp(1.8rem, 1.2rem + 2.6vw, 3rem); margin: 0; line-height: 1.2; }
+    .highlight {
+      background: linear-gradient(120deg, color-mix(in oklab, var(--accent) 75%, transparent), transparent 60%);
+      padding: .1rem .3rem; border-radius: .4rem;
+    }
     .subtitle { color: var(--muted); margin-top: .25rem; }
     .actions { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: .9rem; }
     .btn {
       display: inline-flex; align-items: center; gap: .5rem; border: 1px solid var(--border);
       background: var(--card); color: var(--text); padding: .55rem .8rem; border-radius: .6rem; font-weight: 600;
-      transition: transform .2s ease;
+      transition: transform .2s ease, box-shadow .2s ease;
+      box-shadow: var(--shadow);
     }
     .btn.primary { background: var(--accent); color: #fff; border-color: color-mix(in oklab, var(--accent) 60%, black); }
     .btn:hover { text-decoration: none; transform: translateY(-1px); }
@@ -115,12 +133,25 @@
     .muted { color: var(--muted); }
 
     .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 1rem; }
+    .card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 1rem;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      box-shadow: var(--shadow);
+    }
+    .card:hover { transform: translateY(-3px); border-color: color-mix(in oklab, var(--accent) 45%, var(--border)); }
     .card h3 { margin: 0 0 .5rem; font-size: 1.05rem; }
     .meta { font-size: .9rem; color: var(--muted); }
 
-    .pub-toolbar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin-bottom: .75rem; }
+    .pub-toolbar { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin-bottom: .9rem; }
     .search { width: min(420px, 100%); border: 1px solid var(--border); background: var(--bg); color: var(--text); padding: .55rem .7rem; border-radius: .6rem; }
+    .chips { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }
+    .chip {
+      border: 1px solid var(--border); background: var(--card); color: var(--text);
+      padding: .35rem .6rem; border-radius: 999px; font-size: .9rem; cursor: pointer; user-select: none;
+    }
+    .chip[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: color-mix(in oklab, var(--accent) 60%, black); }
+    .select { border: 1px solid var(--border); background: var(--bg); color: var(--text); padding: .45rem .6rem; border-radius: .6rem; }
+
     .pub-list { list-style: none; padding: 0; margin: 0; }
     .pub-item { padding: .8rem; border: 1px solid var(--border); border-radius: .8rem; margin-bottom: .6rem; background: var(--card); }
     .pub-item .title { font-weight: 650; }
@@ -130,6 +161,22 @@
     .socials { display: flex; gap: .8rem; flex-wrap: wrap; }
     .badge { border: 1px solid var(--border); background: var(--card); padding: .35rem .6rem; border-radius: 999px; font-size: .9rem; }
 
+    /* Reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(8px); }
+    .reveal.is-visible { opacity: 1; transform: none; transition: opacity .4s ease, transform .4s ease; }
+
+    /* Back-to-top */
+    .to-top {
+      position: fixed; right: 1rem; bottom: 1rem; z-index: 60; opacity: 0; visibility: hidden;
+      transition: opacity .2s ease, transform .2s ease, visibility .2s;
+      transform: translateY(8px);
+    }
+    .to-top.show { opacity: 1; visibility: visible; transform: none; }
+
+    /* Dialog */
+    dialog { border: 1px solid var(--border); border-radius: .8rem; background: var(--card); color: var(--text); padding: 1rem 1.2rem; width: min(520px, 92%); }
+    dialog::backdrop { background: rgba(0,0,0,.35); }
+
     @media (max-width: 700px) {
       .hero-inner { grid-template-columns: 1fr; text-align: center; }
       .actions { justify-content: center; }
@@ -138,12 +185,20 @@
 
     @media (prefers-reduced-motion: reduce) {
       * { transition: none !important; }
-      .btn:hover { transform: none; }
+      .btn:hover, .card:hover { transform: none; }
+    }
+
+    /* Print */
+    @media print {
+      header, .actions, .pub-toolbar, .to-top, .progress { display: none !important; }
+      .card, .pub-item { box-shadow: none !important; background: #fff !important; }
+      a[href^="http"]::after { content: " (" attr(href) ")"; font-weight: 400; }
     }
   </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
 
   <header>
     <div class="container nav">
@@ -164,14 +219,15 @@
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
-        <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode" aria-pressed="false">🌗</button>
+        <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode" aria-pressed="false" title="Toggle theme (t)">🌗</button>
+        <button class="theme-btn" id="helpBtn" aria-label="Keyboard shortcuts" title="Keyboard shortcuts (?)">⌨️</button>
       </nav>
     </div>
   </header>
 
   <main id="main" class="container">
     <!-- Hero / Intro -->
-    <section class="hero" id="home">
+    <section class="hero reveal" id="home">
       <div class="hero-inner">
         <!-- ✅ Updated hero photo to your photo -->
         <img class="avatar"
@@ -180,7 +236,7 @@
              width="140" height="140"
              decoding="async" fetchpriority="high" />
         <div>
-          <h1>Ravi Satyappa Dabbanavar</h1>
+          <h1><span class="highlight">Ravi Satyappa Dabbanavar</span></h1>
           <div class="subtitle">Ph.D. Scholar (IV Year, II Semester) · Department of Architecture & Planning · IIT Roorkee</div>
           <div class="actions">
             <a class="btn primary" href="#publications">View Publications</a>
@@ -192,7 +248,7 @@
     </section>
 
     <!-- About -->
-    <section id="about">
+    <section id="about" class="reveal">
       <h2 class="section-title">About</h2>
       <div class="stack">
         <p>
@@ -204,7 +260,7 @@
     </section>
 
     <!-- Education -->
-    <section id="education">
+    <section id="education" class="reveal">
       <h2 class="section-title">Education</h2>
       <ul>
         <li><strong>Ph.D. Scholar (Integrated PG + Ph.D.)</strong>, IIT Roorkee — <em>Pursuing</em> · IV Year, II Semester</li>
@@ -215,7 +271,7 @@
     </section>
 
     <!-- Research -->
-    <section id="research">
+    <section id="research" class="reveal">
       <h2 class="section-title">Research</h2>
       <div class="grid">
         <article class="card">
@@ -232,12 +288,20 @@
     </section>
 
     <!-- Publications -->
-    <section id="publications" aria-live="polite">
+    <section id="publications" aria-live="polite" class="reveal">
       <h2 class="section-title">Publications</h2>
       <div class="pub-toolbar">
         <label for="pubSearch" class="visually-hidden" style="position:absolute;left:-9999px;">Search publications</label>
-        <input id="pubSearch" class="search" type="search" placeholder="Search publications (title, author, venue, year)…" aria-label="Search publications" />
-        <span id="pubCount" class="muted"></span>
+        <input id="pubSearch" class="search" type="search" placeholder="Search publications (title, author, venue, year)…  (hit / to focus)" aria-label="Search publications" />
+        <div class="chips" id="yearChips" role="group" aria-label="Filter by year"></div>
+        <div class="chips" id="statusChips" role="group" aria-label="Filter by status"></div>
+        <select id="sortSelect" class="select" aria-label="Sort publications">
+          <option value="year-desc">Year ↓</option>
+          <option value="year-asc">Year ↑</option>
+          <option value="title-asc">Title A–Z</option>
+        </select>
+        <button class="btn" id="clearFilters">Clear</button>
+        <span id="pubCount" class="muted" aria-live="polite"></span>
       </div>
       <ol id="pubList" class="pub-list"></ol>
       <details class="muted" style="margin-top:.5rem"><summary>How to edit this list</summary>
@@ -246,7 +310,7 @@
     </section>
 
     <!-- Conferences & Workshops -->
-    <section id="conferences">
+    <section id="conferences" class="reveal">
       <h2 class="section-title">Conferences & Workshops</h2>
       <ul>
         <li><strong>EGU General Assembly</strong>, Apr 27 – May 2, 2025, Vienna — “Integrating User-Generated POI Data and Satellite Imagery for Enhanced Urban Land Use Classification: A Topic Modeling Approach” — <a href="https://doi.org/10.5194/egusphere-egu25-8380" target="_blank" rel="noopener noreferrer">DOI</a></li>
@@ -258,7 +322,7 @@
     </section>
 
     <!-- Projects -->
-    <section id="projects">
+    <section id="projects" class="reveal">
       <h2 class="section-title">Selected Projects</h2>
       <div class="grid">
         <article class="card">
@@ -280,7 +344,7 @@
     </section>
 
     <!-- Awards -->
-    <section id="awards">
+    <section id="awards" class="reveal">
       <h2 class="section-title">Awards & Achievements</h2>
       <ul>
         <li>Best 25 Poster submissions — Mission Amrit Sarovar, Jal Dharohar Sanrakshan Internship (2022)</li>
@@ -291,7 +355,7 @@
     </section>
 
     <!-- Experience -->
-    <section id="experience">
+    <section id="experience" class="reveal">
       <h2 class="section-title">Experience (Internships)</h2>
       <ul>
         <li><strong>Tamil Nadu Institute of Urban Studies, Coimbatore</strong> — Summer Internship (Jun–Jul 2018) · GIS handbook for town-planning officials (TN)</li>
@@ -301,7 +365,7 @@
     </section>
 
     <!-- Teaching -->
-    <section id="teaching">
+    <section id="teaching" class="reveal">
       <h2 class="section-title">Teaching</h2>
       <ul>
         <li><strong>TA — ARN-651, Planning Studio (MURP)</strong>, Dept. of Architecture & Planning, IIT Roorkee — Spring 2022</li>
@@ -313,7 +377,7 @@
     </section>
 
     <!-- Skills -->
-    <section id="skills">
+    <section id="skills" class="reveal">
       <h2 class="section-title">Skills</h2>
       <div class="grid">
         <div class="card">
@@ -336,12 +400,15 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact">
+    <section id="contact" class="reveal">
       <h2 class="section-title">Contact</h2>
       <div class="grid">
         <div class="card">
           <h3>Email</h3>
-          <p><a href="mailto:rs_dabbanavar@ar.iitr.ac.in">rs_dabbanavar@ar.iitr.ac.in</a></p>
+          <p>
+            <a id="emailLink" href="mailto:rs_dabbanavar@ar.iitr.ac.in">rs_dabbanavar@ar.iitr.ac.in</a>
+            <button class="btn" id="copyEmail" aria-label="Copy email">Copy</button>
+          </p>
         </div>
         <div class="card">
           <h3>Phone</h3>
@@ -363,13 +430,28 @@
   </main>
 
   <footer>
+    <button class="btn to-top" id="toTop" aria-label="Back to top">↑ Top</button>
     <div class="container stack">
       <div class="muted">© <span id="year"></span> Ravi Satyappa Dabbanavar · Last updated <time id="lastUpdated"></time></div>
       <div class="muted">This site is a single HTML file. Host it on GitHub Pages by pushing to a repo and enabling Pages in <em>Settings → Pages</em>.</div>
     </div>
   </footer>
 
-  <!-- JSON-LD Person Schema (✅ adds your image for richer previews) -->
+  <!-- Keyboard Shortcuts Help -->
+  <dialog id="kbdDialog" aria-labelledby="kbdTitle">
+    <h3 id="kbdTitle" style="margin-top:0">Keyboard Shortcuts</h3>
+    <ul>
+      <li><kbd>t</kbd> — Toggle theme</li>
+      <li><kbd>/</kbd> — Focus publications search</li>
+      <li><kbd>?</kbd> — Open this help</li>
+      <li><kbd>Home</kbd>/<kbd>End</kbd> — Top/Bottom of page</li>
+    </ul>
+    <div style="display:flex;gap:.5rem;justify-content:flex-end">
+      <button class="btn" id="kbdClose">Close</button>
+    </div>
+  </dialog>
+
+  <!-- JSON-LD Person Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -457,94 +539,159 @@
       }
     ];
 
-    // Render publications grouped by year + search
+    // --- Publications: filter + sort + search
     const listEl = document.getElementById('pubList');
     const countEl = document.getElementById('pubCount');
     const totalCount = publications.length;
+    const yearsSet = Array.from(new Set(publications.map(p => p.year))).sort((a,b)=>b-a);
+    const yearChipsEl = document.getElementById('yearChips');
+    const statusChipsEl = document.getElementById('statusChips');
+    const sortEl = document.getElementById('sortSelect');
+    const searchEl = document.getElementById('pubSearch');
+    const clearBtn = document.getElementById('clearFilters');
+
+    let state = { year: 'All', status: 'All', sort: 'year-desc', q: '' };
+
+    function statusOf(p) {
+      const underReview = /under review/i.test(p.venue);
+      const hasDOI = p.links && p.links.doi;
+      if (hasDOI) return 'Published';
+      return underReview ? 'Under review' : 'Published';
+    }
+
+    function makeChip(label, groupEl, current) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'chip';
+      btn.textContent = label;
+      btn.setAttribute('aria-pressed', String(current === label));
+      btn.addEventListener('click', () => {
+        const isYear = groupEl === yearChipsEl;
+        if (isYear) state.year = label;
+        else state.status = label;
+        [...groupEl.children].forEach(c => c.setAttribute('aria-pressed', 'false'));
+        btn.setAttribute('aria-pressed', 'true');
+        render();
+      });
+      groupEl.appendChild(btn);
+    }
+
+    function buildChips() {
+      yearChipsEl.innerHTML = '';
+      statusChipsEl.innerHTML = '';
+      makeChip('All', yearChipsEl, state.year);
+      yearsSet.forEach(y => makeChip(String(y), yearChipsEl, state.year));
+      ['All','Published','Under review'].forEach(s => makeChip(s, statusChipsEl, state.status));
+    }
+    buildChips();
+
+    function applyFilters(items) {
+      return items.filter(p => {
+        const okYear = state.year === 'All' || String(p.year) === state.year;
+        const okStatus = state.status === 'All' || statusOf(p) === state.status;
+        const hay = (p.title + ' ' + p.venue + ' ' + String(p.year) + ' ' + p.authors.join(' ')).toLowerCase();
+        const okQ = !state.q || hay.includes(state.q);
+        return okYear && okStatus && okQ;
+      });
+    }
+
+    function applySort(items) {
+      const arr = items.slice();
+      if (state.sort === 'year-desc') arr.sort((a,b)=> b.year - a.year || a.title.localeCompare(b.title));
+      if (state.sort === 'year-asc')  arr.sort((a,b)=> a.year - b.year || a.title.localeCompare(b.title));
+      if (state.sort === 'title-asc') arr.sort((a,b)=> a.title.localeCompare(b.title));
+      return arr;
+    }
 
     function renderPublications(items) {
       listEl.innerHTML = '';
-      const byYear = items.reduce((acc, p) => {
-        (acc[p.year] ||= []).push(p); return acc;
-      }, {});
-      const years = Object.keys(byYear).map(Number).sort((a, b) => b - a);
-
-      let rendered = 0;
-      if (years.length === 0) {
+      if (!items.length) {
         const li = document.createElement('li');
         li.className = 'pub-item';
-        li.textContent = 'No publications match your search.';
+        li.textContent = 'No publications match your filters.';
         listEl.appendChild(li);
-      } else {
-        for (const y of years) {
-          const yearGroup = document.createElement('li');
-          yearGroup.className = 'pub-item';
-          const header = document.createElement('div');
-          header.className = 'meta';
-          header.textContent = y;
-          yearGroup.appendChild(header);
+        return;
+      }
+      const byYear = items.reduce((acc, p) => ((acc[p.year] ||= []).push(p), acc), {});
+      const years = Object.keys(byYear).map(Number).sort((a, b) => state.sort === 'year-asc' ? a - b : b - a);
 
-          const groupList = document.createElement('ol');
-          groupList.style.marginTop = '.5rem';
-          groupList.style.paddingLeft = '1rem';
+      let rendered = 0;
+      for (const y of years) {
+        const yearGroup = document.createElement('li');
+        yearGroup.className = 'pub-item';
+        const header = document.createElement('div');
+        header.className = 'meta';
+        header.textContent = y;
+        yearGroup.appendChild(header);
 
-          for (const p of byYear[y]) {
-            rendered++;
-            const li = document.createElement('li');
-            li.style.marginBottom = '.5rem';
+        const groupList = document.createElement('ol');
+        groupList.style.marginTop = '.5rem';
+        groupList.style.paddingLeft = '1rem';
 
-            const title = document.createElement('div');
-            title.className = 'title';
-            title.textContent = p.title;
+        byYear[y].forEach(p => {
+          rendered++;
+          const li = document.createElement('li');
+          li.style.marginBottom = '.5rem';
 
-            const authors = document.createElement('div');
-            authors.className = 'authors';
-            authors.textContent = p.authors.join(', ');
+          const title = document.createElement('div');
+          title.className = 'title';
+          title.textContent = p.title;
 
-            const venue = document.createElement('div');
-            venue.className = 'venue';
-            venue.textContent = p.venue;
+          const authors = document.createElement('div');
+          authors.className = 'authors';
+          authors.textContent = p.authors.join(', ');
 
-            const links = document.createElement('div');
-            links.className = 'meta';
-            if (p.links) {
-              const entries = Object.entries(p.links).filter(([,v]) => !!v);
-              for (const [k, v] of entries) {
-                const a = document.createElement('a');
-                a.href = v.startsWith('http') || v.startsWith('#') ? v : `https://doi.org/${v}`;
-                a.target = v.startsWith('#') ? '' : '_blank';
-                a.rel = v.startsWith('#') ? '' : 'noopener noreferrer';
-                a.textContent = k.toUpperCase();
-                a.style.marginRight = '.6rem';
-                links.appendChild(a);
-              }
+          const venue = document.createElement('div');
+          venue.className = 'venue';
+          venue.textContent = p.venue + ' — ' + statusOf(p);
+
+          const links = document.createElement('div');
+          links.className = 'meta';
+          if (p.links) {
+            const entries = Object.entries(p.links).filter(([,v]) => !!v);
+            for (const [k, v] of entries) {
+              const a = document.createElement('a');
+              a.href = v.startsWith('http') || v.startsWith('#') ? v : `https://doi.org/${v}`;
+              a.target = v.startsWith('#') ? '' : '_blank';
+              a.rel = v.startsWith('#') ? '' : 'noopener noreferrer';
+              a.textContent = k.toUpperCase();
+              a.style.marginRight = '.6rem';
+              links.appendChild(a);
             }
-
-            li.appendChild(title);
-            li.appendChild(authors);
-            li.appendChild(venue);
-            if (links.childNodes.length) li.appendChild(links);
-            groupList.appendChild(li);
           }
 
-          yearGroup.appendChild(groupList);
-          listEl.appendChild(yearGroup);
-        }
+          li.appendChild(title);
+          li.appendChild(authors);
+          li.appendChild(venue);
+          if (links.childNodes.length) li.appendChild(links);
+          groupList.appendChild(li);
+        });
+
+        yearGroup.appendChild(groupList);
+        listEl.appendChild(yearGroup);
       }
+
       const plural = totalCount === 1 ? 'item' : 'items';
       const suffix = items.length === totalCount ? '' : ` · showing ${items.length} of ${totalCount}`;
       countEl.textContent = `${totalCount} ${plural}${suffix}`;
     }
 
-    renderPublications(publications);
+    function render() {
+      const filtered = applyFilters(publications);
+      const sorted = applySort(filtered);
+      renderPublications(sorted);
+    }
+    render();
 
-    document.getElementById('pubSearch').addEventListener('input', (e) => {
-      const q = e.target.value.trim().toLowerCase();
-      if (!q) return renderPublications(publications);
-      const filtered = publications.filter(p =>
-        (p.title + ' ' + p.venue + ' ' + String(p.year) + ' ' + p.authors.join(' ')).toLowerCase().includes(q)
-      );
-      renderPublications(filtered);
+    searchEl.addEventListener('input', (e) => { state.q = e.target.value.trim().toLowerCase(); render(); });
+    sortEl.addEventListener('change', (e) => { state.sort = e.target.value; render(); });
+    clearBtn.addEventListener('click', () => {
+      state = { year: 'All', status: 'All', sort: 'year-desc', q: '' };
+      searchEl.value = '';
+      buildChips();
+      sortEl.value = state.sort;
+      render();
+      searchEl.focus();
     });
 
     // Active section link highlight via IntersectionObserver
@@ -563,6 +710,74 @@
         });
       }, { threshold: 0.5 });
       document.querySelectorAll('main section[id]').forEach(sec => obs.observe(sec));
+    })();
+
+    // Reveal on scroll
+    (function revealSections() {
+      const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduce) { document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible')); return; }
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    })();
+
+    // Scroll progress + back-to-top
+    (function scrollHelpers() {
+      const bar = document.getElementById('progress');
+      const toTop = document.getElementById('toTop');
+      const onScroll = () => {
+        const h = document.documentElement;
+        const scrolled = (h.scrollTop) / ((h.scrollHeight - h.clientHeight) || 1);
+        bar.style.width = (scrolled * 100).toFixed(2) + '%';
+        if (h.scrollTop > 500) toTop.classList.add('show'); else toTop.classList.remove('show');
+      };
+      document.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+      toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    })();
+
+    // Copy email
+    (function copyEmail() {
+      const btn = document.getElementById('copyEmail');
+      const link = document.getElementById('emailLink');
+      btn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(link.textContent.trim());
+          btn.textContent = 'Copied!';
+          setTimeout(() => (btn.textContent = 'Copy'), 1400);
+        } catch {
+          btn.textContent = 'Press Ctrl+C';
+        }
+      });
+    })();
+
+    // Keyboard shortcuts dialog
+    (function keyboard() {
+      const dialog = document.getElementById('kbdDialog');
+      const openBtn = document.getElementById('helpBtn');
+      const closeBtn = document.getElementById('kbdClose');
+      function open() { dialog.showModal(); }
+      function close() { dialog.close(); }
+      openBtn.addEventListener('click', open);
+      closeBtn.addEventListener('click', close);
+      dialog.addEventListener('click', (e) => { if (e.target === dialog) close(); });
+
+      document.addEventListener('keydown', (e) => {
+        const tag = e.target.tagName;
+        if (e.key === 't' && !e.metaKey && !e.ctrlKey && !e.altKey) {
+          e.preventDefault();
+          document.getElementById('themeToggle').click();
+        } else if (e.key === '/' && tag !== 'INPUT' && tag !== 'TEXTAREA') {
+          e.preventDefault();
+          document.getElementById('pubSearch').focus();
+        } else if (e.key === '?' && !e.metaKey && !e.ctrlKey && !e.altKey) {
+          e.preventDefault();
+          open();
+        }
+      });
     })();
   </script>
 </body>
